@@ -4,6 +4,8 @@ from discord.ext import commands
 from dotenv import load_dotenv
 from discord.ui import Button, View
 
+
+
 cards_colours = ['hearts', 'diamonds', 'clover', 'spades']
 cards_list = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
 ids = [
@@ -26,6 +28,7 @@ deck = [(card, colour, ids[i]) for i, (card, colour ) in enumerate([(card, colou
 bot = commands.Bot(command_prefix='/', intents=discord.Intents.all())
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
+
 
 def card_value(card):
     if card[0] in ['J', 'Q', 'K']:
@@ -122,7 +125,7 @@ async def on_ready():
     except Exception as e:
         print(f"Failed to sync commands: {e}")
 
-@bot.tree.command(name="hello")
+@bot.tree.command(name="blackjack", description="Start a game of blackjack")
 async def hello(interaction: discord.Interaction):
     random.shuffle(deck)
     player_card = [deck.pop(), deck.pop()]
