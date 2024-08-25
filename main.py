@@ -126,7 +126,7 @@ async def on_ready():
         print(f"Failed to sync commands: {e}")
 
 @bot.tree.command(name="blackjack", description="Start a game of blackjack")
-async def hello(interaction: discord.Interaction):
+async def blackjack(interaction: discord.Interaction):
     random.shuffle(deck)
     player_card = [deck.pop(), deck.pop()]
     dealer_card = [deck.pop(), deck.pop()]
